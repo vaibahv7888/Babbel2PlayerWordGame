@@ -15,6 +15,7 @@ class GameScene: SKScene {
     private var scorePlayerTwoLbl : SKLabelNode!
     private var rightAnswerLbl : SKLabelNode!
     private var wrongAnswerLbl : SKLabelNode!
+    private var goodGoingLbl : SKLabelNode!
     private var scores : Score!
     private var isAnswerInProcess = false
     private var mainWord : Words!
@@ -119,6 +120,16 @@ class GameScene: SKScene {
         self.wrongAnswerLbl.position = CGPoint(x: frame.midX, y: frame.midY)
         self.wrongAnswerLbl.alpha = 0
         addChild(self.wrongAnswerLbl)
+        
+        self.goodGoingLbl = SKLabelNode(text: "Good Going Reached 5 points")
+        self.goodGoingLbl.position = CGPoint(x: frame.midX, y: frame.midY)
+        self.goodGoingLbl.fontColor = SKColor.green
+        self.goodGoingLbl.fontName = "BubbleGum"
+        self.goodGoingLbl.zPosition = 1
+        self.goodGoingLbl.fontSize = labelFontTo(screenWithPercentage: 0.05)
+        self.goodGoingLbl.position = CGPoint(x: frame.midX, y: frame.midY)
+        self.goodGoingLbl.alpha = 0
+        addChild(self.goodGoingLbl)
     }
 
     func startNewMainWord() {
@@ -192,10 +203,36 @@ class GameScene: SKScene {
         self.removeTransition()
         if self.checkAnswer() {
             self.addScore(for: player)
-            animateAnswerLabel(label: self.rightAnswerLbl)
+            switch player {
+            case .one:
+                if scores.playerOneScore % 5 == 0 {
+                    appreciatePlayers(score: scores.playerOneScore)
+                } else {
+                    animateAnswerLabel(label: self.rightAnswerLbl)
+                }
+                break
+            case .two:
+                if scores.playerOneScore % 5 == 0 {
+                    appreciatePlayers(score: scores.playerOneScore)
+                } else {
+                    animateAnswerLabel(label: self.rightAnswerLbl)
+                }
+                break
+            }
         } else {
             animateAnswerLabel(label: self.wrongAnswerLbl)
         }
+    }
+    
+    func appreciatePlayers(score: Int) {
+        let scr = String(score)
+        let text = "Good Going reached " + scr + " points"
+        self.goodGoingLbl.text = text
+        self.goodGoingLbl.alpha = 1
+        self.goodGoingLbl.run(SKAction.sequence([SKAction.wait(forDuration: 1), SKAction.run({
+            self.goodGoingLbl.alpha = 0
+            self.animateAnswerLabel(label: self.rightAnswerLbl)
+        })]))
     }
     
     func labelFontTo(screenWithPercentage: CGFloat) -> CGFloat {
