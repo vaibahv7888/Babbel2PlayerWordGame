@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D406407D22EC947B00BDE5AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D406407C22EC947B00BDE5AA /* AppDelegate.swift */; };
-		D406407F22EC947B00BDE5AA /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D406407E22EC947B00BDE5AA /* GameScene.sks */; };
-		D406408122EC947B00BDE5AA /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = D406408022EC947B00BDE5AA /* Actions.sks */; };
 		D406408322EC947B00BDE5AA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D406408222EC947B00BDE5AA /* GameScene.swift */; };
 		D406408522EC947B00BDE5AA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D406408422EC947B00BDE5AA /* GameViewController.swift */; };
 		D406408822EC947B00BDE5AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D406408622EC947B00BDE5AA /* Main.storyboard */; };
@@ -17,6 +15,13 @@
 		D406408D22EC947D00BDE5AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D406408B22EC947D00BDE5AA /* LaunchScreen.storyboard */; };
 		D406409822EC947D00BDE5AA /* Babbel2PlayerWordGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D406409722EC947D00BDE5AA /* Babbel2PlayerWordGameTests.swift */; };
 		D40640A322EC947D00BDE5AA /* Babbel2PlayerWordGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40640A222EC947D00BDE5AA /* Babbel2PlayerWordGameUITests.swift */; };
+		D40640B122EC951200BDE5AA /* GameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40640B022EC951200BDE5AA /* GameButton.swift */; };
+		D40640B322EC95AD00BDE5AA /* Bubblegum.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D40640B222EC95AD00BDE5AA /* Bubblegum.ttf */; };
+		D40640B522ECAA6000BDE5AA /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = D40640B422ECAA6000BDE5AA /* words.json */; };
+		D40640B722ECD20400BDE5AA /* FetchWordsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40640B622ECD20400BDE5AA /* FetchWordsData.swift */; };
+		D40640B922ECD25000BDE5AA /* FetchWordsDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40640B822ECD25000BDE5AA /* FetchWordsDataProtocol.swift */; };
+		D40640BB22ECD4BD00BDE5AA /* Words.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40640BA22ECD4BD00BDE5AA /* Words.swift */; };
+		D43E091A22EDBA3C00B39BB9 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43E091922EDBA3C00B39BB9 /* Score.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +44,6 @@
 /* Begin PBXFileReference section */
 		D406407922EC947B00BDE5AA /* Babbel2PlayerWordGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Babbel2PlayerWordGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D406407C22EC947B00BDE5AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D406407E22EC947B00BDE5AA /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		D406408022EC947B00BDE5AA /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		D406408222EC947B00BDE5AA /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		D406408422EC947B00BDE5AA /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		D406408722EC947B00BDE5AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -53,6 +56,13 @@
 		D406409E22EC947D00BDE5AA /* Babbel2PlayerWordGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Babbel2PlayerWordGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D40640A222EC947D00BDE5AA /* Babbel2PlayerWordGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Babbel2PlayerWordGameUITests.swift; sourceTree = "<group>"; };
 		D40640A422EC947D00BDE5AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D40640B022EC951200BDE5AA /* GameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButton.swift; sourceTree = "<group>"; };
+		D40640B222EC95AD00BDE5AA /* Bubblegum.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bubblegum.ttf; sourceTree = "<group>"; };
+		D40640B422ECAA6000BDE5AA /* words.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = words.json; sourceTree = "<group>"; };
+		D40640B622ECD20400BDE5AA /* FetchWordsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchWordsData.swift; sourceTree = "<group>"; };
+		D40640B822ECD25000BDE5AA /* FetchWordsDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchWordsDataProtocol.swift; sourceTree = "<group>"; };
+		D40640BA22ECD4BD00BDE5AA /* Words.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Words.swift; sourceTree = "<group>"; };
+		D43E091922EDBA3C00B39BB9 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,14 +113,11 @@
 		D406407B22EC947B00BDE5AA /* Babbel2PlayerWordGame */ = {
 			isa = PBXGroup;
 			children = (
-				D406407C22EC947B00BDE5AA /* AppDelegate.swift */,
-				D406407E22EC947B00BDE5AA /* GameScene.sks */,
-				D406408022EC947B00BDE5AA /* Actions.sks */,
-				D406408222EC947B00BDE5AA /* GameScene.swift */,
-				D406408422EC947B00BDE5AA /* GameViewController.swift */,
-				D406408622EC947B00BDE5AA /* Main.storyboard */,
-				D406408922EC947D00BDE5AA /* Assets.xcassets */,
-				D406408B22EC947D00BDE5AA /* LaunchScreen.storyboard */,
+				D43E091F22EDD93800B39BB9 /* AppDelegate */,
+				D43E091E22EDD93000B39BB9 /* Scenes */,
+				D43E091D22EDD92100B39BB9 /* View */,
+				D43E091C22EDD70600B39BB9 /* Resources */,
+				D43E091B22EDD6FA00B39BB9 /* Model */,
 				D406408E22EC947D00BDE5AA /* Info.plist */,
 			);
 			path = Babbel2PlayerWordGame;
@@ -132,6 +139,54 @@
 				D40640A422EC947D00BDE5AA /* Info.plist */,
 			);
 			path = Babbel2PlayerWordGameUITests;
+			sourceTree = "<group>";
+		};
+		D43E091B22EDD6FA00B39BB9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D40640BA22ECD4BD00BDE5AA /* Words.swift */,
+				D43E091922EDBA3C00B39BB9 /* Score.swift */,
+				D40640B022EC951200BDE5AA /* GameButton.swift */,
+				D40640B822ECD25000BDE5AA /* FetchWordsDataProtocol.swift */,
+				D40640B622ECD20400BDE5AA /* FetchWordsData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D43E091C22EDD70600B39BB9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D406408622EC947B00BDE5AA /* Main.storyboard */,
+				D406408922EC947D00BDE5AA /* Assets.xcassets */,
+				D406408B22EC947D00BDE5AA /* LaunchScreen.storyboard */,
+				D40640B422ECAA6000BDE5AA /* words.json */,
+				D40640B222EC95AD00BDE5AA /* Bubblegum.ttf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D43E091D22EDD92100B39BB9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D406408422EC947B00BDE5AA /* GameViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D43E091E22EDD93000B39BB9 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				D406408222EC947B00BDE5AA /* GameScene.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		D43E091F22EDD93800B39BB9 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				D406407C22EC947B00BDE5AA /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,10 +294,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D406408822EC947B00BDE5AA /* Main.storyboard in Resources */,
-				D406407F22EC947B00BDE5AA /* GameScene.sks in Resources */,
 				D406408A22EC947D00BDE5AA /* Assets.xcassets in Resources */,
+				D40640B322EC95AD00BDE5AA /* Bubblegum.ttf in Resources */,
 				D406408D22EC947D00BDE5AA /* LaunchScreen.storyboard in Resources */,
-				D406408122EC947B00BDE5AA /* Actions.sks in Resources */,
+				D40640B522ECAA6000BDE5AA /* words.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,8 +323,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D406408322EC947B00BDE5AA /* GameScene.swift in Sources */,
+				D40640B122EC951200BDE5AA /* GameButton.swift in Sources */,
+				D43E091A22EDBA3C00B39BB9 /* Score.swift in Sources */,
+				D40640BB22ECD4BD00BDE5AA /* Words.swift in Sources */,
+				D40640B922ECD25000BDE5AA /* FetchWordsDataProtocol.swift in Sources */,
 				D406408522EC947B00BDE5AA /* GameViewController.swift in Sources */,
 				D406407D22EC947B00BDE5AA /* AppDelegate.swift in Sources */,
+				D40640B722ECD20400BDE5AA /* FetchWordsData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
