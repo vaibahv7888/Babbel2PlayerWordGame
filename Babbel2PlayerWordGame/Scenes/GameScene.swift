@@ -15,10 +15,19 @@ class GameScene: SKScene {
     private var scorePlayerTwoLbl : SKLabelNode!
     private var rightAnswerLbl : SKLabelNode!
     private var wrongAnswerLbl : SKLabelNode!
+    private var scores : Score!
+    private var isAnswerInProcess = false
+    private var mainWord : Words!
+    private var translatedWord : Words!
 
+    let fetchWordsData : FetchWordsDataProtocol!
+    
     lazy var buzzerButtonOne : GameButton = {
         let button = GameButton(imageName: "BuzzerRed", titleLabel: "Buzzer 1", buttonAction: {
-            print("buzzerButtonTwo clicked")
+            if !self.isAnswerInProcess {
+                self.isAnswerInProcess = true
+                self.processAnswer(for: .one)
+            }
         })
         button.zPosition = 1
         button.scaleTo(screenWithPercentage: 0.15)
@@ -27,13 +36,26 @@ class GameScene: SKScene {
     
     lazy var buzzerButtonTwo : GameButton = {
         let button = GameButton(imageName: "BuzzerRed", titleLabel: "Buzzer 2", buttonAction: {
-            print("buzzerButtonTwo clicked")
+            if !self.isAnswerInProcess {
+                self.isAnswerInProcess = true
+                self.processAnswer(for: .two)
+            }
         })
         button.zPosition = 1
         button.scaleTo(screenWithPercentage: 0.15)
         return button
     }()
     
+    override init(size: CGSize) {
+        fetchWordsData = FetchWordsData()
+        scores = Score(playerOneScore: 0, playerTwoScore: 0)
+        super.init(size: size)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func didMove(to view: SKView) {
         print("In GameScene didMove")
         layoutScene()
@@ -43,6 +65,8 @@ class GameScene: SKScene {
         backgroundColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1.0)
         addLables()
         addBuzzerButtons()
+        displayScore()
+        startNewMainWord()
     }
     
     func addBuzzerButtons () {
@@ -97,6 +121,83 @@ class GameScene: SKScene {
         addChild(self.wrongAnswerLbl)
     }
 
+    func startNewMainWord() {
+        removeTransition()
+        getWords()
+        getNextTranslatedWord()
+        startWord()
+    }
+    
+    func removeTransition() {
+        translatedWordLbl.removeAllActions()
+        translatedWordLbl.position = CGPoint(x: frame.minX-100, y: frame.midY)
+    }
+    
+    func getWords() {
+        guard let mainWord = self.fetchWordsData.getMainWord() else { return }
+        self.mainWord = mainWord
+        self.mainWordLbl.text = mainWord.text_eng
+    }
+    
+    func getNextTranslatedWord() {
+        guard let translatedWord = self.fetchWordsData.getRandomWord(except: mainWord) else { return }
+        self.translatedWord = translatedWord
+        self.translatedWordLbl.text = translatedWord.text_spa
+    }
+    
+    func startWord() {
+        let path = CGMutablePath()
+        path.move(to: CGPoint(x: frame.minX, y: frame.midY))
+        path.addLine(to: CGPoint(x: frame.maxX, y: frame.midY))
+        let followLine = SKAction.follow(path, asOffset: false, orientToPath: false, duration: 3)
+        translatedWordLbl.run(followLine) {
+            self.getNextTranslatedWord()
+            self.startWord()
+        }
+    }
+    
+    func checkAnswer() -> Bool {
+        return self.mainWord == self.translatedWord
+    }
+    
+    func addScore(for player:Player) {
+        switch player {
+        case .one:
+            self.scores.playerOneScore += 1
+            break
+        case .two:
+            self.scores.playerTwoScore += 1
+            break
+        }
+        displayScore()
+    }
+    
+    func displayScore() {
+        self.scorePlayerOneLbl.text = "\(self.scores.playerOneScore)"
+        self.scorePlayerTwoLbl.text = "\(self.scores.playerTwoScore)"
+    }
+    
+    func animateAnswerLabel(label:SKLabelNode) {
+        let scaleUp = SKAction.scale(by: 1.05, duration: 0.2)
+        let scaleDown = SKAction.scale(by: 0.95, duration: 0.2)
+        label.alpha = 1.0
+        label.run(SKAction.sequence([scaleUp, scaleDown, scaleUp, scaleDown, scaleUp, scaleDown, SKAction.run({
+            label.alpha = 0
+            self.isAnswerInProcess = false
+            self.startNewMainWord()
+        })]))
+    }
+    
+    func processAnswer(for player: Player) {
+        self.removeTransition()
+        if self.checkAnswer() {
+            self.addScore(for: player)
+            animateAnswerLabel(label: self.rightAnswerLbl)
+        } else {
+            animateAnswerLabel(label: self.wrongAnswerLbl)
+        }
+    }
+    
     func labelFontTo(screenWithPercentage: CGFloat) -> CGFloat {
         return UIScreen.main.bounds.width * screenWithPercentage
     }
