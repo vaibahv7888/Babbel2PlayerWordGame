@@ -11,12 +11,12 @@ import Foundation
 struct FetchWordsData : FetchWordsDataProtocol {
     var words : [Words]?
     
-    init() {
-        words = readJSON()
+    init(fileName:String) {
+        words = readJSON(fileName: fileName)
     }
     
-    func readJSON() -> [Words]? {
-        if let path = Bundle.main.path(forResource: "words", ofType: "json") {
+    func readJSON(fileName:String) -> [Words]? {
+        if let path = Bundle.main.path(forResource: fileName, ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
                 let jsonResponse = try JSONSerialization.jsonObject(with:

@@ -48,7 +48,7 @@ class GameScene: SKScene {
     }()
     
     override init(size: CGSize) {
-        fetchWordsData = FetchWordsData()
+        fetchWordsData = FetchWordsData(fileName: "words")
         scores = Score(playerOneScore: 0, playerTwoScore: 0)
         super.init(size: size)
     }
@@ -121,7 +121,7 @@ class GameScene: SKScene {
         self.wrongAnswerLbl.alpha = 0
         addChild(self.wrongAnswerLbl)
         
-        self.goodGoingLbl = SKLabelNode(text: "Good Going Reached 5 points")
+        self.goodGoingLbl = SKLabelNode(text: "Good Going")
         self.goodGoingLbl.position = CGPoint(x: frame.midX, y: frame.midY)
         self.goodGoingLbl.fontColor = SKColor.green
         self.goodGoingLbl.fontName = "BubbleGum"
@@ -141,7 +141,7 @@ class GameScene: SKScene {
     
     func removeTransition() {
         translatedWordLbl.removeAllActions()
-        translatedWordLbl.position = CGPoint(x: frame.minX-100, y: frame.midY)
+        translatedWordLbl.position = CGPoint(x: frame.minX-200, y: frame.midY)
     }
     
     func getWords() {

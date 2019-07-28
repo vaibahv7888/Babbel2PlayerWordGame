@@ -10,9 +10,10 @@ import XCTest
 @testable import Babbel2PlayerWordGame
 
 class Babbel2PlayerWordGameTests: XCTestCase {
-
+    var fetchWordData : FetchWordsData!
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        fetchWordData = FetchWordsData(fileName: "words")
     }
 
     override func tearDown() {
@@ -22,6 +23,7 @@ class Babbel2PlayerWordGameTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        XCTAssertEqual(fetchWordData.words?[0].text_eng, "primary school")
     }
 
     func testPerformanceExample() {
