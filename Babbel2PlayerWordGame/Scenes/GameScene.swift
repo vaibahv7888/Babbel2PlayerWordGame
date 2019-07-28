@@ -229,7 +229,7 @@ class GameScene: SKScene {
         let text = "Good Going reached " + scr + " points"
         self.goodGoingLbl.text = text
         self.goodGoingLbl.alpha = 1
-        self.goodGoingLbl.run(SKAction.sequence([SKAction.wait(forDuration: 1), SKAction.run({
+        self.goodGoingLbl.run(SKAction.sequence([SKAction.wait(forDuration: 3), SKAction.run({
             self.goodGoingLbl.alpha = 0
             self.animateAnswerLabel(label: self.rightAnswerLbl)
         })]))
